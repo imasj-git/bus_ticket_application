@@ -7,7 +7,8 @@ class LandingPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     // Navigate to Login Page after a delay
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushNamed(context, '/login'); // Navigate to the Login Page
+      // ignore: use_build_context_synchronously
+      Navigator.pushNamed(context, '/starting'); // Navigate to the Login Page
     });
 
     return Scaffold(
