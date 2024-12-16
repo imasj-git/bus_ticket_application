@@ -6,7 +6,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF1A1E78), // Dark blue background
+      backgroundColor: const Color(0xFF673AB7), // Dark blue background
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -91,12 +91,12 @@ class HomeView extends StatelessWidget {
                   ),
                   const Divider(),
                   // From and To Fields
-                  Row(
+                  const Row(
                     children: [
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
+                          children: [
                             Text(
                               "From",
                               style: TextStyle(color: Colors.grey),
@@ -108,11 +108,11 @@ class HomeView extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const Icon(Icons.compare_arrows, color: Colors.grey),
+                      Icon(Icons.compare_arrows, color: Colors.grey),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
+                          children: [
                             Text(
                               "To",
                               style: TextStyle(color: Colors.grey),
@@ -128,12 +128,12 @@ class HomeView extends StatelessWidget {
                   ),
                   const Divider(),
                   // Date Picker
-                  Row(
+                  const Row(
                     children: [
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
+                          children: [
                             Text(
                               "From",
                               style: TextStyle(color: Colors.grey),
@@ -145,11 +145,11 @@ class HomeView extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(width: 20),
+                      SizedBox(width: 20),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
+                          children: [
                             Text(
                               "To",
                               style: TextStyle(color: Colors.grey),

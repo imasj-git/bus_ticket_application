@@ -36,7 +36,7 @@ class SignupView extends StatelessWidget {
                 'by creating a free account.',
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.grey,
+                  color: Colors.black,
                 ),
               ),
               const SizedBox(height: 30),
@@ -78,7 +78,18 @@ class SignupView extends StatelessWidget {
               TextField(
                 obscureText: true,
                 decoration: InputDecoration(
-                  labelText: 'Strong Password',
+                  labelText: 'Password',
+                  prefixIcon: const Icon(Icons.lock_outline),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: 'Confirm Password',
                   prefixIcon: const Icon(Icons.lock_outline),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -99,12 +110,12 @@ class SignupView extends StatelessWidget {
                     child: Text.rich(
                       TextSpan(
                         text: 'By checking the box you agree to our ',
-                        style: TextStyle(color: Colors.grey),
+                        style: TextStyle(color: Colors.black),
                         children: [
                           TextSpan(
                             text: 'Terms and Conditions.',
                             style: TextStyle(
-                              color: Colors.blue,
+                              color: Colors.deepPurple,
                               decoration: TextDecoration.underline,
                             ),
                           ),
@@ -121,7 +132,7 @@ class SignupView extends StatelessWidget {
                   // Navigate to the next page
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue, // Button color
+                  backgroundColor: Colors.deepPurple, // Button color
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -132,7 +143,7 @@ class SignupView extends StatelessWidget {
                 ),
                 child: const Text(
                   'Next  >',
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 16,color: Colors.white),
                 ),
               ),
               const SizedBox(height: 20),
@@ -144,12 +155,12 @@ class SignupView extends StatelessWidget {
                 child: const Text.rich(
                   TextSpan(
                     text: 'Already a member? ',
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(color: Colors.black),
                     children: [
                       TextSpan(
                         text: 'Log In',
                         style: TextStyle(
-                          color: Colors.blue,
+                          color: Colors.deepPurple,
                           decoration: TextDecoration.underline,
                         ),
                       ),

@@ -38,7 +38,7 @@ class LoginView extends StatelessWidget {
                 'Sign in to access your account',
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.grey,
+                  color: Colors.black,
                 ),
               ),
               const SizedBox(height: 40),
@@ -90,7 +90,7 @@ class LoginView extends StatelessWidget {
                     child: const Text(
                       'Forgot password?',
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Colors.deepPurple,
                         decoration: TextDecoration.underline,
                       ),
                     ),
@@ -105,7 +105,7 @@ class LoginView extends StatelessWidget {
                   // Navigate to the next page
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue, // Button color
+                  backgroundColor: Colors.deepPurple, // Button color
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -116,7 +116,7 @@ class LoginView extends StatelessWidget {
                 ),
                 child: const Text(
                   'Log in  >',
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 16,color: Colors.white),
                 ),
               ),
               const SizedBox(height: 20),
@@ -133,12 +133,12 @@ class LoginView extends StatelessWidget {
                 child: const Text.rich(
                   TextSpan(
                     text: 'New Member? ',
-                    style: TextStyle(color: Colors.grey),
+                    style: TextStyle(color: Colors.black),
                     children: [
                       TextSpan(
                         text: 'Register now',
                         style: TextStyle(
-                          color: Colors.blue,
+                          color: Colors.deepPurple,
                           decoration: TextDecoration.underline,
                         ),
                       ),
@@ -147,6 +147,43 @@ class LoginView extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 40),
+              ElevatedButton.icon(
+                onPressed: () {
+                  // Handle Facebook login
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  minimumSize: const Size(double.infinity, 50),
+                ),
+                icon: const Icon(Icons.facebook, color: Colors.white),
+                label: const Text(
+                  'Login with Facebook',
+                  style: TextStyle(fontSize: 16, color: Colors.white),
+                ),
+              ),
+              const SizedBox(height: 10),
+              ElevatedButton.icon(
+                onPressed: () {
+                  // Handle Google login
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  minimumSize: const Size(double.infinity, 50),
+                ),
+                icon: const Icon(Icons.g_mobiledata, color: Colors.white),
+                label: const Text(
+                  'Login with Google',
+                  style: TextStyle(fontSize: 16, color: Colors.white),
+                ),
+              ),
             ],
           ),
         ),
