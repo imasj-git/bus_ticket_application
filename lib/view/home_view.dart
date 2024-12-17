@@ -103,7 +103,8 @@ class HomeView extends StatelessWidget {
                             ),
                             Text(
                               "Kathmandu",
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -119,7 +120,8 @@ class HomeView extends StatelessWidget {
                             ),
                             Text(
                               "Pokhara",
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -140,7 +142,8 @@ class HomeView extends StatelessWidget {
                             ),
                             Text(
                               "02-04-2022",
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -156,7 +159,8 @@ class HomeView extends StatelessWidget {
                             ),
                             Text(
                               "04-05-2022",
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -216,8 +220,10 @@ class HomeView extends StatelessWidget {
         showUnselectedLabels: true,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.receipt_long), label: "Tickets"),
-          BottomNavigationBarItem(icon: Icon(Icons.directions_bus), label: "Bus"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.receipt_long), label: "Tickets"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.directions_bus), label: "Bus"),
           BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Setting"),
         ],
         currentIndex: 0,
