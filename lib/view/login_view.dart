@@ -101,14 +101,13 @@ class LoginView extends StatelessWidget {
               // Next Button
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> const HomeView()),);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomeView()),
+                  );
                   // Navigate to the next page
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple, // Button color
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
                   padding: const EdgeInsets.symmetric(
                     horizontal: 40,
                     vertical: 15,
@@ -116,7 +115,10 @@ class LoginView extends StatelessWidget {
                 ),
                 child: const Text(
                   'Log in  >',
-                  style: TextStyle(fontSize: 16,color: Colors.white),
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
@@ -125,9 +127,10 @@ class LoginView extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                     MaterialPageRoute(
-                      builder: (context)=>const SignupView(),
-                      ),);
+                    MaterialPageRoute(
+                      builder: (context) => const SignupView(),
+                    ),
+                  );
                   // Navigate to Register Page
                 },
                 child: const Text.rich(
@@ -153,9 +156,6 @@ class LoginView extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
                   padding: const EdgeInsets.symmetric(vertical: 15),
                   minimumSize: const Size(double.infinity, 50),
                 ),
@@ -172,9 +172,6 @@ class LoginView extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
                   padding: const EdgeInsets.symmetric(vertical: 15),
                   minimumSize: const Size(double.infinity, 50),
                 ),

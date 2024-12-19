@@ -27,6 +27,7 @@ environment:
 # dependencies can be manually updated by changing the version numbers below to
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
+
 dependencies:
   flutter:
     sdk: flutter
@@ -77,7 +78,7 @@ flutter:
         - asset: assets/fonts/Lora-Bold.ttf
     - family: Lora Italic
       fonts:
-        - asset: assets/fonts/Lore-Italic.ttf
+        - asset: assets/fonts/Lora-Italic.ttf
     - family: Lora Regular
       fonts:
         - asset: assets/fonts/Lora-Regular.ttf
