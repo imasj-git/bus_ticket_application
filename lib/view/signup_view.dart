@@ -132,10 +132,6 @@ class SignupView extends StatelessWidget {
                   // Navigate to the next page
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple, // Button color
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
                   padding: const EdgeInsets.symmetric(
                     horizontal: 40,
                     vertical: 15,
@@ -143,14 +139,15 @@ class SignupView extends StatelessWidget {
                 ),
                 child: const Text(
                   'Next  >',
-                  style: TextStyle(fontSize: 16,color: Colors.white),
+                  style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ),
               const SizedBox(height: 20),
               // Already a Member? Log In
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/login'); // Navigate to Login Page
+                  Navigator.pushNamed(
+                      context, '/login'); // Navigate to Login Page
                 },
                 child: const Text.rich(
                   TextSpan(
