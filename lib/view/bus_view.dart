@@ -7,7 +7,6 @@ class BusView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          automaticallyImplyLeading: false,
           title: const Text(
             'Bus',
             style: TextStyle(color: Colors.white),
