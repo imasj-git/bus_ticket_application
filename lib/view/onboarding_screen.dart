@@ -15,17 +15,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     {
       "image": "assets/images/welcome.png",
       "title": "Welcome to BusSewa",
-      "description": "Book your bus tickets seamlessly and travel with comfort. Your journey starts here!"
+      "description":
+          "Book your bus tickets seamlessly and travel with comfort. Your journey starts here!"
     },
     {
       "image": "assets/images/welcome2.png",
       "title": "Easy Ticket Booking",
-      "description": "Find and book bus tickets for any destination in just a few taps. Simple and hassle-free!"
+      "description":
+          "Find and book bus tickets for any destination in just a few taps. Simple and hassle-free!"
     },
     {
       "image": "assets/images/welcome3.png",
       "title": "Live Bus Tracking",
-      "description": "Track your bus in real time and plan your journey with confidence. Never miss a ride!"
+      "description":
+          "Track your bus in real time and plan your journey with confidence. Never miss a ride!"
     },
   ];
 
@@ -152,11 +155,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 }
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepPurple,
                 padding: const EdgeInsets.symmetric(vertical: 14),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
               ),
               child: Text(
                 _currentPage == _onboardingData.length - 1

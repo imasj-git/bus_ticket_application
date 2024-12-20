@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +24,7 @@ class HomeView extends StatelessWidget {
           ),
         ],
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -212,24 +218,6 @@ class HomeView extends StatelessWidget {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        selectedItemColor: const Color(0xFF1A1E78),
-        unselectedItemColor: Colors.grey,
-        showUnselectedLabels: true,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.receipt_long), label: "Tickets"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.directions_bus), label: "Bus"),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Setting"),
-        ],
-        currentIndex: 0,
-        onTap: (index) {
-          // Add bottom navigation logic
-        },
       ),
     );
   }
