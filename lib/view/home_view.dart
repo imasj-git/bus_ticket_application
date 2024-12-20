@@ -11,18 +11,12 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF673AB7), // Dark blue background
+      backgroundColor: Colors.deepPurple,
+      // Dark blue background
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.account_circle, color: Colors.white),
-            onPressed: () {
-              // Add profile navigation logic here
-            },
-          ),
-        ],
       ),
 
       body: Padding(

@@ -5,8 +5,21 @@ class BusView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('bus'),
+    return Scaffold(
+      appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: const Text(
+            'Bus',
+            style: TextStyle(color: Colors.white),
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.deepPurple),
+      body: const Center(
+        child: Text(
+          'Bus',
+          style: TextStyle(fontSize: 18),
+        ),
+      ),
     );
   }
 }

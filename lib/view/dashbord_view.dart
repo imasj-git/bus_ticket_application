@@ -25,8 +25,8 @@ class _DashbordViewState extends State<DashbordView> {
       body: lstBottomScreen[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.amber,
-        selectedItemColor: Colors.white,
+        backgroundColor: Colors.white,
+        selectedItemColor: Colors.deepPurple,
         unselectedItemColor: Colors.black,
         currentIndex: _selectedIndex,
         onTap: (index) {

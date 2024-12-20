@@ -5,8 +5,21 @@ class SettingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('setting'),
+    return Scaffold(
+      appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: const Text(
+            'Setting',
+            style: TextStyle(color: Colors.white),
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.deepPurple),
+      body: const Center(
+        child: Text(
+          'Setting',
+          style: TextStyle(fontSize: 18),
+        ),
+      ),
     );
   }
 }

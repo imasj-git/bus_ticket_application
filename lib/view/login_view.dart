@@ -1,4 +1,4 @@
-import 'package:bus_ticket_app/view/home_view.dart';
+import 'package:bus_ticket_app/view/dashbord_view.dart';
 import 'package:bus_ticket_app/view/signup_view.dart';
 import 'package:flutter/material.dart';
 
@@ -103,7 +103,8 @@ class LoginView extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomeView()),
+                    MaterialPageRoute(
+                        builder: (context) => const DashbordView()),
                   );
                   // Navigate to the next page
                 },
