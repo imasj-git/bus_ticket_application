@@ -1,4 +1,4 @@
-import 'package:bus_ticket_app/core/aap_theme/app_theme.dart';
+import 'package:bus_ticket_app/core/theme/app_theme.dart';
 import 'package:bus_ticket_app/view/dashbord_view.dart';
 import 'package:bus_ticket_app/view/landing_page_view.dart';
 import 'package:bus_ticket_app/view/login_view.dart';

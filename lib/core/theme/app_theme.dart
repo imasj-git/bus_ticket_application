@@ -5,6 +5,12 @@ ThemeData getApplicationTheme() {
     primarySwatch: Colors.deepPurple,
     scaffoldBackgroundColor: Colors.white,
     fontFamily: 'Lora Regular',
+    textTheme: const TextTheme(
+      bodyMedium: TextStyle(
+        fontSize: 16,
+        fontFamily: 'Lora Regular',
+      ),
+    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         textStyle: const TextStyle(
@@ -16,6 +22,14 @@ ThemeData getApplicationTheme() {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
+      ),
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      selectedLabelStyle: TextStyle(
+        fontFamily: 'Lora Regular',
+      ),
+      unselectedLabelStyle: TextStyle(
+        fontFamily: 'Lora Regular',
       ),
     ),
   );
