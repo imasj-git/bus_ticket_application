@@ -1,10 +1,9 @@
-import 'package:bus_ticket_app/core/theme/app_theme.dart';
-import 'package:bus_ticket_app/view/dashbord_view.dart';
-import 'package:bus_ticket_app/view/landing_page_view.dart';
-import 'package:bus_ticket_app/view/login_view.dart';
-import 'package:bus_ticket_app/view/onboarding_screen.dart';
-import 'package:bus_ticket_app/view/signup_view.dart';
+import 'package:bus_ticket_application/app/di/di.dart';
+import 'package:bus_ticket_application/core/theme/app_theme.dart';
+import 'package:bus_ticket_application/features/splash/presentation/view/splash_view.dart';
+import 'package:bus_ticket_application/features/splash/presentation/view_model/splash_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -13,15 +12,12 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      theme: getApplicationTheme(),
-      routes: {
-        '/': (context) => const LandingPageView(),
-        '/starting': (context) => const OnboardingScreen(),
-        '/login': (context) => const LoginView(),
-        '/signup': (context) => const SignupView(),
-        '/dashboard': (context) => const DashbordView(),
-      },
+      title: 'Bus Ticket Application',
+      theme: AppTheme.getApplicationTheme(isDarkMode: false),
+      home: BlocProvider.value(
+        value: getIt<SplashCubit>(),
+        child: SplashView(),
+      ),
     );
   }
 }
