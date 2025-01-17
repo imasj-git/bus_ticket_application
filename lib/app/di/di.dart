@@ -1,14 +1,15 @@
-import 'package:food_delivery_application/core/network/hive_service.dart';
-import 'package:food_delivery_application/features/auth/data/data_source/local_data_source/auth_local_datasource.dart';
-import 'package:food_delivery_application/features/auth/data/repository/auth_local_repository/auth_local_repository.dart';
-import 'package:food_delivery_application/features/auth/domain/use_case/login_usecase.dart';
-import 'package:food_delivery_application/features/auth/domain/use_case/register_user_usecase.dart';
-import 'package:food_delivery_application/features/auth/presentation/view_model/login/login_bloc.dart';
-import 'package:food_delivery_application/features/auth/presentation/view_model/signup/register_bloc.dart';
-import 'package:food_delivery_application/features/home/presentation/view_model/home_cubit.dart';
-import 'package:food_delivery_application/features/onboarding/presentation/view_model/onboarding_cubit.dart';
-import 'package:food_delivery_application/features/splash/presentation/view_model/splash_cubit.dart';
+import 'package:bus_ticket_application/core/network/hive_service.dart';
+import 'package:bus_ticket_application/features/auth/data/data_source/local_data_source/auth_local_datasource.dart';
+import 'package:bus_ticket_application/features/auth/data/repository/auth_local_repository/auth_local_repository.dart';
+import 'package:bus_ticket_application/features/auth/domain/use_case/login_usecase.dart';
+import 'package:bus_ticket_application/features/auth/domain/use_case/register_user_usecase.dart';
+import 'package:bus_ticket_application/features/auth/presentation/view_model/login/login_bloc.dart';
+import 'package:bus_ticket_application/features/auth/presentation/view_model/signup/register_bloc.dart';
+import 'package:bus_ticket_application/features/home/presentation/view_model/home_cubit.dart';
+import 'package:bus_ticket_application/features/onboarding/presentation/view_model/onboarding_cubit.dart';
 import 'package:get_it/get_it.dart';
+
+import 'bus_ticket_application/features/splash/presentation/view_model/splash_cubit.dart';
 
 final getIt = GetIt.instance;
 
