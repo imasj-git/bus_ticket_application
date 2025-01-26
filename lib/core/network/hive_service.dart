@@ -1,7 +1,8 @@
-import 'package:bus_ticket_application/app/constants/hive_table_constant.dart';
-import 'package:bus_ticket_application/features/auth/data/model/auth_hive_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
+
+import '../../app/constants/hive_table_constant.dart';
+import '../../features/auth/data/model/auth_hive_model.dart';
 
 class HiveService {
   Future<void> init() async {

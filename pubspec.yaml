@@ -46,14 +46,3 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
-
-  fonts:
-    - family: Poopins Bold
-      fonts:
-        - asset: assets/fonts/Poppins-Bold.ttf
-    - family: Poppins Italic
-      fonts:
-        - asset: assets/fonts/Poppins-Italic.ttf
-    - family: Poppins Regular
-      fonts:
-        - asset: assets/fonts/Poppins-Regular.ttf

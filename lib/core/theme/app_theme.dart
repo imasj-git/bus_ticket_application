@@ -1,5 +1,6 @@
-import 'package:bus_ticket_application/app/constants/theme_constant.dart';
 import 'package:flutter/material.dart';
+
+import '../../app/constants/theme_constant.dart';
 
 class AppTheme {
   AppTheme._();

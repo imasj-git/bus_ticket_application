@@ -1,10 +1,11 @@
 import 'dart:io';
 
-import 'package:bus_ticket_application/core/network/hive_service.dart';
-import 'package:bus_ticket_application/features/auth/data/data_source/auth_data_source.dart';
-import 'package:bus_ticket_application/features/auth/data/model/auth_hive_model.dart';
-import 'package:bus_ticket_application/features/auth/domain/entity/auth_entity.dart';
 import 'package:path_provider/path_provider.dart';
+
+import '../../../../../core/network/hive_service.dart';
+import '../../../domain/entity/auth_entity.dart';
+import '../../model/auth_hive_model.dart';
+import '../auth_data_source.dart';
 
 class AuthLocalDataSource implements IAuthDataSource {
   final HiveService _hiveService;

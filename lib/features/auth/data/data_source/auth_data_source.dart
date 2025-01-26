@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:bus_ticket_application/features/auth/domain/entity/auth_entity.dart';
+import '../../domain/entity/auth_entity.dart';
 
 abstract interface class IAuthDataSource {
   Future<String> loginCustomer(String email, String password);

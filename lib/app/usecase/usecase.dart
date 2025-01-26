@@ -1,5 +1,6 @@
-import 'package:bus_ticket_application/core/error/failure.dart';
 import 'package:dartz/dartz.dart';
+
+import '../../core/error/failure.dart';
 
 abstract interface class UseCaseWithParams<SuccessType, Params> {
   Future<Either<Failure, SuccessType>> call(Params params);
