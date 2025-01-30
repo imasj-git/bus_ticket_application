@@ -1,10 +1,10 @@
+import 'package:bus_ticket_app/app/usecase/usecase.dart';
+import 'package:bus_ticket_app/core/error/failure.dart';
+import 'package:bus_ticket_app/features/auth/domain/entity/auth_entity.dart';
+import 'package:bus_ticket_app/features/auth/domain/repository/auth_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../../app/usecase/usecase.dart';
-import '../../../../core/error/failure.dart';
-import '../entity/auth_entity.dart';
-import '../repository/auth_repository.dart';
 
 class RegisterUserParams extends Equatable {
   final String fname;
@@ -12,6 +12,7 @@ class RegisterUserParams extends Equatable {
   final String phone;
   final String email;
   final String password;
+  final String? image;
 
   const RegisterUserParams({
     required this.fname,
@@ -19,6 +20,7 @@ class RegisterUserParams extends Equatable {
     required this.phone,
     required this.email,
     required this.password,
+    this.image,
   });
 
   //intial constructor
@@ -28,6 +30,7 @@ class RegisterUserParams extends Equatable {
     required this.phone,
     required this.email,
     required this.password,
+    this.image,
   });
 
   @override
@@ -47,6 +50,8 @@ class RegisterUseCase implements UseCaseWithParams<void, RegisterUserParams> {
       email: params.email,
       password: params.password,
       phone: params.phone,
+      image:params.image,
+      
     );
     return repository.registerCustomer(authEntity);
   }
