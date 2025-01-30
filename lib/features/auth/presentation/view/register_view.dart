@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../view_model/signup/register_bloc.dart';
 
@@ -38,6 +39,33 @@ class _RegisterViewState extends State<RegisterView> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
+  // Check for camera permission
+  Future<void> checkCameraPermission() async {
+    if (await Permission.camera.request().isRestricted ||
+        await Permission.camera.request().isDenied) {
+      await Permission.camera.request();
+    }
+  }
+
+  File? _img;
+  Future _browseImage(ImageSource imageSource) async {
+    try {
+      final image = await ImagePicker().pickImage(source: imageSource);
+      if (image != null) {
+        setState(() {
+          _img = File(image.path);
+          // Send image to server
+          context.read<RegisterBloc>().add(
+                UploadImage(file: _img!),
+              );
+        });
+      } else {
+        return;
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,16 +120,17 @@ class _RegisterViewState extends State<RegisterView> {
                             children: [
                               ElevatedButton.icon(
                                 onPressed: () {
-                                  _pickImage(ImageSource
-                                      .camera); // Pick image from camera
+                                  checkCameraPermission();
+                                  _browseImage(ImageSource.camera);
+                                  Navigator.pop(context);
                                 },
                                 icon: const Icon(Icons.camera),
                                 label: const Text('Camera'),
                               ),
                               ElevatedButton.icon(
                                 onPressed: () {
-                                  _pickImage(ImageSource
-                                      .gallery); // Pick image from gallery
+                                  _browseImage(ImageSource.gallery);
+                                  Navigator.pop(context);
                                 },
                                 icon: const Icon(Icons.image),
                                 label: const Text('Gallery'),
@@ -118,10 +147,10 @@ class _RegisterViewState extends State<RegisterView> {
                           width: 130,
                           child: CircleAvatar(
                             radius: 50,
-                            backgroundImage: _selectedImage != null
-                                ? FileImage(_selectedImage!)
+                            backgroundImage: _img != null
+                                ? FileImage(_img!)
                                 : const AssetImage(
-                                    'assets/images/profile.jpg',
+                                    'assets/images/profile.png',
                                   ) as ImageProvider,
                           ),
                         ),
@@ -284,6 +313,9 @@ class _RegisterViewState extends State<RegisterView> {
                           return;
                         }
                         if (_key.currentState!.validate()) {
+                          final registerState=
+                              context.read<RegisterBloc>().state;
+                          final imageName=registerState.imageName;
                           context.read<RegisterBloc>().add(
                                 RegisterCustomer(
                                   context: context,
@@ -292,6 +324,7 @@ class _RegisterViewState extends State<RegisterView> {
                                   phone: _phoneController.text,
                                   email: _emailController.text,
                                   password: _passwordController.text,
+                                  image: imageName,
                                 ),
                               );
                         }
