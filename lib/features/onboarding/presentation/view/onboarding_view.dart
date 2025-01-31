@@ -170,6 +170,16 @@ class _OnboardingScreenState extends State<OnboardingView> {
           ),
           const SizedBox(height: 10),
           // Skip Button
+          TextButton(
+            onPressed: () => _goToLoginPage(context),
+            child: const Text(
+              "Skip",
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey,
+              ),
+            ),
+          ),
         ],
       ),
     );

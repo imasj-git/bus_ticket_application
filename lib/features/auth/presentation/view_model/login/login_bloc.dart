@@ -75,6 +75,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           },
           (token) {
             emit(state.copyWith(isLoading: false, isSuccess: true));
+            showMySnackBar(context: event.context, message: "Login Successful");
             add(
               NavigateHomeScreenEvent(
                 context: event.context,
