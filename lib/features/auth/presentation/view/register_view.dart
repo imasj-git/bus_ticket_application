@@ -16,20 +16,7 @@ class RegisterView extends StatefulWidget {
 
 class _RegisterViewState extends State<RegisterView> {
   bool _termsAccepted = false;
-  File? _selectedImage;
-  final ImagePicker _imagePicker = ImagePicker();
-
-  Future<void> _pickImage(ImageSource source) async {
-    final pickedFile = await _imagePicker.pickImage(source: source);
-
-    if (pickedFile != null) {
-      setState(() {
-        _selectedImage = File(pickedFile.path);
-      });
-      // ignore: use_build_context_synchronously
-      Navigator.pop(context);
-    }
-  }
+  
 
   final _gap = const SizedBox(height: 8);
   final _key = GlobalKey<FormState>();
