@@ -11,7 +11,7 @@ class InboxView extends StatelessWidget {
         backgroundColor: Colors.orange,
         elevation: 0,
         title: const Text(
-          'Inbox',
+          'Inogyfgt',
           style: TextStyle(
             color: Colors.white,
             fontSize: 18,
@@ -22,7 +22,7 @@ class InboxView extends StatelessWidget {
       ),
       body: const Center(
         child: Text(
-          'Inbox',
+          'Inbssdox',
           style: TextStyle(fontSize: 18),
         ),
       ),

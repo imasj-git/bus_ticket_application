@@ -33,6 +33,7 @@ dependencies:
   flutter_bloc: ^8.1.6
   bloc: ^8.1.4
   mocktail: ^1.0.4
+  lucide_icons_flutter: ^1.2.8
 
 dev_dependencies:
   flutter_test:

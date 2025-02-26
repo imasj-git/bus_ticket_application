@@ -10,6 +10,10 @@ import 'package:bus_ticket_app/features/auth/domain/use_case/register_usecase.da
 import 'package:bus_ticket_app/features/auth/domain/use_case/upload_image_usecase.dart';
 import 'package:bus_ticket_app/features/auth/presentation/view_model/login/login_bloc.dart';
 import 'package:bus_ticket_app/features/auth/presentation/view_model/signup/register_bloc.dart';
+import 'package:bus_ticket_app/features/booking/presentation/view_model/booking_cubit.dart';
+
+import 'package:bus_ticket_app/features/booking/presentation/view_model/search_cubit.dart';
+import 'package:bus_ticket_app/features/booking/presentation/view_model/seat_cubit.dart';
 import 'package:bus_ticket_app/features/home/presentation/view_model/home_cubit.dart';
 import 'package:bus_ticket_app/features/onboarding/presentation/view_model/onbording_cubit.dart';
 import 'package:bus_ticket_app/features/splash/presentation/view_model/splash_cubit.dart';
@@ -28,6 +32,10 @@ Future<void> initDependencies() async {
   await _initLoginDependencies();
   await _initSplashScreenDependencies();
   await _initOnboardingScreenDependencies();
+  await _initSearchDependencies(); 
+  await _initSeatDependencies();  // <-- Add this function
+  await _initBookingDependencies();
+
 }
 
 _initHiveService() {
@@ -53,6 +61,27 @@ _initHomeDependencies() async {
     () => HomeCubit(),
   );
 }
+
+
+
+_initSeatDependencies() {
+  getIt.registerFactory<SeatCubit>(
+    () => SeatCubit(),
+  );
+}
+
+_initSearchDependencies() async {
+  getIt.registerFactory<SearchCubit>(
+    () => SearchCubit(),
+  );
+}
+
+_initBookingDependencies() async {
+  getIt.registerFactory<BookingCubit>(
+    () => BookingCubit(),
+  );
+}
+
 
 _initRegisterDependencies() {
   // init data source

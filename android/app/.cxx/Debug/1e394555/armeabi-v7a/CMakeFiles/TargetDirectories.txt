@@ -1,0 +1,2 @@
+C:/Users/joshi/Desktop/bus_ticket_application/android/app/.cxx/Debug/1e394555/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/joshi/Desktop/bus_ticket_application/android/app/.cxx/Debug/1e394555/armeabi-v7a/CMakeFiles/rebuild_cache.dir

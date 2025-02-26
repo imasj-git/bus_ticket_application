@@ -1,256 +1,209 @@
+import 'package:bus_ticket_app/features/booking/presentation/view/search_view.dart';
 import 'package:flutter/material.dart';
 
-class DashboardView extends StatefulWidget {
-  const DashboardView({super.key});
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-  @override
-  State<DashboardView> createState() => _HomeViewState();
-}
+class DashboardView extends StatelessWidget {
+  final Function(String)
+      onShiftSelected; // Callback function for state management
 
-class _HomeViewState extends State<DashboardView> {
+  const DashboardView({super.key, required this.onShiftSelected});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
-      // Dark blue background
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+      backgroundColor: Colors.white,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(80),
+        child: AppBar(
+          backgroundColor: Colors.deepPurple,
+          elevation: 0,
+          centerTitle: false,
+          title: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
+            child: Text(
+              "Hey Arthur! Explore the world with us.",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
       ),
-
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Greeting Section
-            const Text(
-              "Hey Arthur! 👋",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            const SizedBox(height: 8),
-            const Text(
-              "Explore the world with us.",
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey,
-              ),
-            ),
-            const SizedBox(height: 30),
-            // Trip Selection Card
+            // Search Input Section
             Container(
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 10,
-                    offset: const Offset(0, 5),
+                    color: Colors.black12,
+                    blurRadius: 8,
+                    spreadRadius: 2,
                   ),
                 ],
               ),
               child: Column(
                 children: [
-                  // Trip Type (Round Trip / One Way)
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Row(
-                          children: [
-                            Radio(
-                              value: true,
-                              groupValue: true, // Update this based on logic
-                              onChanged: (value) {},
-                              activeColor: const Color(0xFF1A1E78),
-                            ),
-                            const Text("Round Trip"),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Row(
-                          children: [
-                            Radio(
-                              value: false,
-                              groupValue: true, // Update this based on logic
-                              onChanged: (value) {},
-                              activeColor: const Color(0xFF1A1E78),
-                            ),
-                            const Text("One Way"),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Divider(),
-                  // From and To Fields
-                  const Row(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "From",
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                            Text(
-                              "Kathmandu",
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Icon(Icons.compare_arrows, color: Colors.grey),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "To",
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                            Text(
-                              "Pokhara",
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Divider(),
-                  // Date Picker
-                  const Row(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "From",
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                            Text(
-                              "02-04-2022",
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 20),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "To",
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                            Text(
-                              "04-05-2022",
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  // Search Button
+                  _buildLocationInput("From", "Kathmandu", LucideIcons.mapPin),
+                  SizedBox(height: 12),
+                  _buildLocationInput("To", "Pokhara", LucideIcons.mapPin),
+                  SizedBox(height: 12),
+                  _buildDateSelector(),
+                  SizedBox(height: 12),
+                  _buildShiftSelector(),
+                  SizedBox(height: 16),
                   ElevatedButton(
-                    onPressed: () {
-                      // Add search bus logic
-                    },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF57B660), // Green color
+                      backgroundColor: Colors.deepPurple,
+                      foregroundColor: Colors.white,
+                      padding: EdgeInsets.symmetric(vertical: 14),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                      padding: const EdgeInsets.symmetric(vertical: 15),
                     ),
-                    child: const Center(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SearchView(),
+                        ),
+                      );
+                    },
+                    child: Center(
                       child: Text(
-                        "Search Bus",
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+                        "Search Buses",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: 20),
+
             // Frequently Visited Section
-            const Text(
-              "Frequently Visited 🌴",
+            Text(
+              "Frequently Visited",
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: Colors.deepPurple,
               ),
             ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // Destination 1
-                _buildDestinationCard("Chitwan", "12 bus a day"),
-                // Destination 2
-                _buildDestinationCard("Butwal", "14 bus a day"),
-              ],
-            ),
+            SizedBox(height: 12),
+            _buildFrequentDestinations(),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildDestinationCard(String destination, String busesPerDay) {
-    return Container(
-      width: 150,
-      padding: const EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            offset: const Offset(0, 5),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            destination,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+  Widget _buildLocationInput(String label, String placeholder, IconData icon) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(label,
+            style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: Colors.grey[700])),
+        SizedBox(height: 6),
+        TextField(
+          decoration: InputDecoration(
+            prefixIcon: Icon(icon, color: Colors.deepPurple),
+            hintText: placeholder,
+            filled: true,
+            fillColor: Colors.grey[100],
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide.none,
             ),
           ),
-          const SizedBox(height: 5),
-          Text(
-            busesPerDay,
-            style: const TextStyle(
-              fontSize: 14,
-              color: Colors.grey,
-            ),
-          ),
-        ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDateSelector() {
+    return Row(
+      children: [
+        Icon(LucideIcons.calendar, color: Colors.deepPurple),
+        SizedBox(width: 10),
+        Text(
+          "Departure Date: 2025-02-26",
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildShiftSelector() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text("Selected Shift:",
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+        Row(
+          children: [
+            _buildShiftOption("Both"),
+            _buildShiftOption("Day"),
+            _buildShiftOption("Night"),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildShiftOption(String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+      child: ChoiceChip(
+        label: Text(text),
+        selectedColor: Colors.deepPurple,
+        backgroundColor: Colors.grey[200],
+        labelStyle: TextStyle(color: Colors.white),
+        onSelected: (bool selected) {
+          if (selected) {
+            onShiftSelected(text); // Trigger callback to update state
+          }
+        },
+        selected: false,
       ),
+    );
+  }
+
+  Widget _buildFrequentDestinations() {
+    List<Map<String, String>> destinations = [
+      {"name": "Kathmandu - Pokhara", "icon": "🚌"},
+      {"name": "Kathmandu - Chitwan", "icon": "🚌"},
+      {"name": "Pokhara - Lumbini", "icon": "🚌"},
+    ];
+
+    return Column(
+      children: destinations.map((destination) {
+        return Card(
+          elevation: 3,
+          margin: EdgeInsets.symmetric(vertical: 6),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          child: ListTile(
+            leading: Text(destination["icon"]!, style: TextStyle(fontSize: 24)),
+            title: Text(destination["name"]!,
+                style: TextStyle(fontWeight: FontWeight.w500)),
+            trailing: Icon(LucideIcons.chevronRight, color: Colors.deepPurple),
+            onTap: () {},
+          ),
+        );
+      }).toList(),
     );
   }
 }
