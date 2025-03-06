@@ -102,15 +102,26 @@ _initRegisterDependencies() {
   );
 
   // register use usecase
+  // getIt.registerLazySingleton<RegisterUseCase>(
+  //   () => RegisterUseCase(
+  //     getIt<AuthRemoteRepository>(),
+  //   ),
+  // );
+
+  // getIt.registerLazySingleton<UploadImageUsecase>(
+  //   () => UploadImageUsecase(
+  //     getIt<AuthRemoteRepository>(),
+  //   ),
+  // );
   getIt.registerLazySingleton<RegisterUseCase>(
     () => RegisterUseCase(
-      getIt<AuthRemoteRepository>(),
+      getIt<AuthLocalRepository>(),
     ),
   );
 
   getIt.registerLazySingleton<UploadImageUsecase>(
     () => UploadImageUsecase(
-      getIt<AuthRemoteRepository>(),
+      getIt<AuthLocalRepository>(),
     ),
   );
 
@@ -141,7 +152,7 @@ _initOnboardingScreenDependencies() async {
 
   getIt.registerLazySingleton<LoginUseCase>(
     () => LoginUseCase(
-      getIt<AuthRemoteRepository>(),
+      getIt<AuthLocalRepository>(),
       getIt<TokenSharedPrefs>(),
     ),
   );

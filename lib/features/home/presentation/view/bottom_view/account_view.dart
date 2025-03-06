@@ -1,144 +1,182 @@
-// import 'package:flutter/material.dart';
+import 'package:bus_ticket_app/core/theme/theme_provider.dart';
 
-// class AccountView extends StatelessWidget {
-//   const AccountView({super.key});
+import 'package:bus_ticket_app/features/home/presentation/view/bottom_view/about_us_view.dart';
+import 'package:bus_ticket_app/features/home/presentation/view/bottom_view/account_settings_view.dart';
+import 'package:bus_ticket_app/features/home/presentation/view/bottom_view/faq_view.dart';
+import 'package:bus_ticket_app/features/home/presentation/view/bottom_view/terms_and_conditions_view.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.white,
-//       appBar: AppBar(
-//         backgroundColor: Colors.deepPurple, // Set theme color
-//         title: const Text(
-//           'Profile',
-//           style: TextStyle(fontWeight: FontWeight.bold),
-//         ),
-//         actions: [
-//           Padding(
-//             padding: const EdgeInsets.all(12.0),
-//             child: IconButton(
-//               icon: Icon(Icons.logout, color: Colors.white),
-//               onPressed: () {
-//                 // Handle logout action
-//               },
-//             ),
-//           )
-//         ],
-//       ),
-//       body: SingleChildScrollView(
-//         child: Column(
-//           children: [
-//             profileHeader(),
-//             taskProgressCard(),
-//             settingsList(),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
+class AccountView extends StatelessWidget {
+  const AccountView({super.key});
 
-//   Widget profileHeader() {
-//     return Container(
-//       decoration: BoxDecoration(
-//         color: Colors.deepPurple, // Theme color
-//         borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
-//       ),
-//       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-//       child: Column(
-//         children: [
-//           Stack(
-//             children: [
-//               CircleAvatar(
-//                 radius: 50,
-//                 backgroundImage: AssetImage('assets/profile.jpg'), // Replace with user's image
-//               ),
-//               Positioned(
-//                 bottom: 5,
-//                 right: 5,
-//                 child: CircleAvatar(
-//                   radius: 15,
-//                   backgroundColor: Colors.white,
-//                   child: Icon(Icons.camera_alt, color: Colors.deepPurple, size: 18),
-//                 ),
-//               ),
-//             ],
-//           ),
-//           const SizedBox(height: 10),
-//           Text(
-//             "Santosh KC",
-//             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
-//           ),
-//           Text(
-//             "kcsantosh2003@gmail.com",
-//             style: TextStyle(fontSize: 14, color: Colors.white70),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
+  @override
+  Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
 
-//   Widget taskProgressCard() {
-//     return Card(
-//       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-//       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-//       elevation: 2,
-//       child: Padding(
-//         padding: const EdgeInsets.all(12.0),
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//               children: [
-//                 Text("0 tasks completed", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-//                 GestureDetector(
-//                   onTap: () {
-//                     // Handle View Details action
-//                   },
-//                   child: Text("View Details >", style: TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.bold)),
-//                 ),
-//               ],
-//             ),
-//             const SizedBox(height: 8),
-//             LinearProgressIndicator(
-//               value: 0.0, // Set progress dynamically
-//               backgroundColor: Colors.grey[300],
-//               color: Colors.deepPurple,
-//             ),
-//             const SizedBox(height: 8),
-//             Text("BRONZE VOYAGER", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Colors.deepPurple)),
-//             Text("18 Tasks remaining", style: TextStyle(fontSize: 12, color: Colors.grey[700])),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
+    return Scaffold(
+      backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
+      appBar: AppBar(
+        backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.deepPurple,
+        title: const Text('Profile', style: TextStyle(fontWeight: FontWeight.bold)),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: IconButton(
+              icon: Icon(Icons.logout, color: Colors.white),
+              onPressed: () {
+                // Handle logout action
+              },
+            ),
+          ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 20),
+            profileHeader(themeProvider), // ✅ Full-width Profile Header
+            SizedBox(height: 20),
+            settingsList(themeProvider, context), // ✅ Pass context for navigation
+          ],
+        ),
+      ),
+    );
+  }
 
-//   Widget settingsList() {
-//     return Column(
-//       children: [
-//         settingsItem(Icons.settings, "Account Settings"),
-//         settingsItem(Icons.local_offer, "Deals & Offers"),
-//         settingsItem(Icons.info, "About Us"),
-//         settingsItem(Icons.question_answer, "Frequently Asked Questions"),
-//         settingsItem(Icons.policy, "Terms & Conditions"),
-//       ],
-//     );
-//   }
+  /// ✅ Full-Width Profile Header with Dark Mode Support
+  Widget profileHeader(ThemeProvider themeProvider) {
+    return Container(
+      width: double.infinity, // ✅ Full Width
+      padding: EdgeInsets.symmetric(vertical: 30),
+      margin: EdgeInsets.symmetric(horizontal: 16),
+      decoration: BoxDecoration(
+        color: themeProvider.isDarkMode ? Colors.black : Colors.deepPurple, // ✅ Dark Mode Support
+        borderRadius: BorderRadius.circular(25), // ✅ Custom Rounded Corners
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 8,
+            spreadRadius: 2,
+            offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          Stack(
+            children: [
+              CircleAvatar(
+                radius: 55,
+                backgroundColor: Colors.white, // White Border
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: AssetImage('assets/profile.jpg'), // Replace with user's image
+                ),
+              ),
+              Positioned(
+                bottom: 5,
+                right: 5,
+                child: CircleAvatar(
+                  radius: 15,
+                  backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
+                  child: Icon(Icons.camera_alt, color: Colors.deepPurple, size: 18),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          Text(
+            "Saurav Joshi",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: themeProvider.isDarkMode ? Colors.white : Colors.white,
+            ),
+          ),
+          SizedBox(height: 4),
+          Text(
+            "saurav@gmail.com",
+            style: TextStyle(
+              fontSize: 14,
+              color: themeProvider.isDarkMode ? Colors.white70 : Colors.white70,
+            ),
+          ),
+          SizedBox(height: 12),
+        ],
+      ),
+    );
+  }
 
-//   Widget settingsItem(IconData icon, String title) {
-//     return Card(
-//       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
-//       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-//       elevation: 1,
-//       child: ListTile(
-//         leading: Icon(icon, color: Colors.deepPurple),
-//         title: Text(title, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
-//         trailing: Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
-//         onTap: () {
-//           // Handle navigation to the respective page
-//         },
-//       ),
-//     );
-//   }
-// }
+  /// ✅ Settings List Section with Dark Mode & Navigation
+  Widget settingsList(ThemeProvider themeProvider, BuildContext context) {
+    return Column(
+      children: [
+        settingsItem(Icons.settings, "Account Settings", themeProvider, context, destination: AccountSettingsView()),
+
+        darkModeToggle(themeProvider), // ✅ Dark Mode Toggle
+        settingsItem(Icons.info, "About Us", themeProvider, context, destination: AboutUsView()), // ✅ Navigate to AboutUsView
+        settingsItem(Icons.question_answer, "Frequently Asked Questions", themeProvider, context, destination: FAQView()),
+
+        settingsItem(Icons.policy, "Terms & Conditions", themeProvider, context, destination: TermsAndConditionsView()),
+
+      ],
+    );
+  }
+
+  /// ✅ Individual Settings Item with Dark Mode & Navigation Support
+  Widget settingsItem(IconData icon, String title, ThemeProvider themeProvider, BuildContext context, {Widget? destination}) {
+    return Card(
+      color: themeProvider.isDarkMode ? Colors.black : Colors.white,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      elevation: themeProvider.isDarkMode ? 0 : 1,
+      child: ListTile(
+        leading: Icon(icon, color: themeProvider.isDarkMode ? Colors.white : Colors.deepPurple),
+        title: Text(
+          title,
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: themeProvider.isDarkMode ? Colors.white : Colors.black,
+          ),
+        ),
+        trailing: Icon(Icons.arrow_forward_ios, size: 16, color: themeProvider.isDarkMode ? Colors.white70 : Colors.grey),
+        onTap: () {
+          if (destination != null) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => destination),
+            );
+          }
+        },
+      ),
+    );
+  }
+
+  /// ✅ Dark Mode Toggle Switch
+  Widget darkModeToggle(ThemeProvider themeProvider) {
+    return Card(
+      color: themeProvider.isDarkMode ? Colors.black : Colors.white,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      elevation: themeProvider.isDarkMode ? 0 : 1,
+      child: ListTile(
+        leading: Icon(Icons.dark_mode, color: themeProvider.isDarkMode ? Colors.white : Colors.deepPurple),
+        title: Text(
+          "Dark Mode",
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: themeProvider.isDarkMode ? Colors.white : Colors.black,
+          ),
+        ),
+        trailing: Switch(
+          value: themeProvider.isDarkMode,
+          activeColor: Colors.deepPurple,
+          onChanged: (value) => themeProvider.toggleTheme(),
+        ),
+      ),
+    );
+  }
+}
